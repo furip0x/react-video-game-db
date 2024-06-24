@@ -5,9 +5,10 @@ import GenreSkeleton from "./Skeletons/GenreSkeleton"
 
 interface Props {
   onSelectGenre: (genre: IGenre) => void
+  selectedGenre: IGenre | null
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres()
 
   if (error) return null
@@ -17,24 +18,37 @@ const GenreList = ({ onSelectGenre }: Props) => {
   return (
     <>
       <List>
-        {data.map((genre) => (
-          <ListItem key={genre.id} paddingY="5px">
-            <HStack>
-              <Image
-                boxSize="32px"
-                borderRadius="8px"
-                src={getCroppedImageUrl(genre.image_background)}
-              />
-              <Button
-                onClick={() => onSelectGenre(genre)}
-                fontSize="lg"
-                variant="link"
-              >
-                {genre.name}
-              </Button>
-            </HStack>
-          </ListItem>
-        ))}
+        {data.map((genre) => {
+          const currentGenre = genre.id === selectedGenre?.id
+
+          return (
+            <ListItem key={genre.id} paddingY={2}>
+              <HStack>
+                <Image
+                  flexShrink="0"
+                  boxSize="32px"
+                  borderRadius="8px"
+                  src={getCroppedImageUrl(genre.image_background)}
+                  border="2px"
+                  borderColor={currentGenre ? "green" : "transparent"}
+                />
+                <Button
+                  onClick={() => onSelectGenre(genre)}
+                  variant="link"
+                  color={currentGenre ? "green" : ""}
+                  fontStyle={currentGenre ? "bold" : "normal"}
+                  flex="1"
+                  justifyContent="start"
+                  fontSize="lg"
+                  noOfLines={1}
+                  textAlign="left"
+                >
+                  {genre.name}
+                </Button>
+              </HStack>
+            </ListItem>
+          )
+        })}
       </List>
     </>
   )
