@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/react"
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
 import { BsCheck, BsChevronDown } from "react-icons/bs"
 import { IPlatform } from "../hooks/useGames"
 import usePlatforms from "../hooks/usePlatforms"
@@ -24,29 +17,27 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   if (isLoading) return <PlatformSelectorSkeleton />
 
   return (
-    <Box paddingBottom="20px">
-      <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {selectedPlatform ? selectedPlatform.name : "Platforms"}
-        </MenuButton>
-        <MenuList>
-          {data.map((platform) => {
-            const currentPlatform = platform.id === selectedPlatform?.id
+    <Menu>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        {selectedPlatform ? selectedPlatform.name : "Platforms"}
+      </MenuButton>
+      <MenuList>
+        {data.map((platform) => {
+          const currentPlatform = platform.id === selectedPlatform?.id
 
-            return (
-              <MenuItem
-                key={platform.id}
-                onClick={() => onSelectPlatform(platform)}
-                justifyContent="space-between"
-              >
-                {platform.name}
-                {currentPlatform && <BsCheck size={20} />}
-              </MenuItem>
-            )
-          })}
-        </MenuList>
-      </Menu>
-    </Box>
+          return (
+            <MenuItem
+              key={platform.id}
+              onClick={() => onSelectPlatform(platform)}
+              justifyContent="space-between"
+            >
+              {platform.name}
+              {currentPlatform && <BsCheck size={20} />}
+            </MenuItem>
+          )
+        })}
+      </MenuList>
+    </Menu>
   )
 }
 
