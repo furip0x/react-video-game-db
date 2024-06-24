@@ -1,5 +1,5 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import { BsChevronDown } from "react-icons/bs"
+import { BsCheck, BsChevronDown } from "react-icons/bs"
 
 interface Props {
   onSelectSortOrder: (sortOrder: string) => void
@@ -16,22 +16,24 @@ const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ]
 
-  const currentSortOrder = sortOrders.find(
-    (order) => order.label === selectedSortOrder
-  )
+  const currentSortOrderLabel =
+    sortOrders.find((order) => order.value === selectedSortOrder)?.label ||
+    sortOrders[0].label
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order by: {currentSortOrder?.label || "Revelance"}
+        Order by: {currentSortOrderLabel}
       </MenuButton>
       <MenuList>
         {sortOrders.map((order) => (
           <MenuItem
             key={order.value}
             onClick={() => onSelectSortOrder(order.value)}
+            justifyContent="space-between"
           >
             {order.label}
+            {currentSortOrderLabel === order.label && <BsCheck size={20} />}
           </MenuItem>
         ))}
       </MenuList>
