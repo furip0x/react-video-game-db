@@ -20,7 +20,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={{
           base: 4,
-          lg: 5,
+          lg: 6,
         }}
       >
         {isLoading &&
