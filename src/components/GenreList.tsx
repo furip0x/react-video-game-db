@@ -28,7 +28,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {data.map((genre) => {
+        {data?.results.map((genre) => {
           const currentGenre = genre.id === selectedGenre?.id
 
           return (
