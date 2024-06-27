@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar"
 import PlatformSelector from "./components/PlatformSelector"
 import SortSelector from "./components/SortSelector"
 import { IGenre } from "./hooks/UseGenres"
-import { IPlatform } from "./hooks/useGames"
+import { IPlatform } from "./hooks/usePlatforms"
 
 export interface IGameQuery {
   genre: IGenre | null
