@@ -14,6 +14,7 @@ export interface IGameQuery {
   platform: IPlatform | null
   sortOrder: string
   searchText: string
+  pageSize: number
 }
 
 function App() {

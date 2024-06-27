@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from "axios"
 
 export interface IFetchResponse<T> {
   count: number
+  next: string | null
+  previous: string | null
   results: T[]
 }
 
