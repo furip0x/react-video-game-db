@@ -5,11 +5,12 @@ import PlatformSelectorSkeleton from "./Skeletons/PlatformSelectorSkeleton"
 
 interface Props {
   onSelectPlatform: (platform: IPlatform) => void
-  selectedPlatform: IPlatform | null
+  selectedPlatformId?: number
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data, error, isLoading } = usePlatforms()
+  const platform = data?.results.find((p) => p.id === selectedPlatformId)
 
   if (error) return null
 
@@ -18,11 +19,11 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPlatform ? selectedPlatform.name : "Platforms"}
+        {selectedPlatformId ? platform?.name : "Platforms"}
       </MenuButton>
       <MenuList>
         {data?.results.map((platform) => {
-          const currentPlatform = platform.id === selectedPlatform?.id
+          const currentPlatform = platform.id === selectedPlatformId
 
           return (
             <MenuItem

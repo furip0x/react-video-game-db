@@ -12,10 +12,10 @@ import GenreSkeleton from "./Skeletons/GenreSkeleton"
 
 interface Props {
   onSelectGenre: (genre: IGenre) => void
-  selectedGenre: IGenre | null
+  selectedGenreId?: number
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data, isLoading, error } = useGenres()
 
   if (error) return null
@@ -29,7 +29,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       </Heading>
       <List>
         {data?.results.map((genre) => {
-          const currentGenre = genre.id === selectedGenre?.id
+          const currentGenre = genre.id === selectedGenreId
 
           return (
             <ListItem key={genre.id} paddingY={2}>
