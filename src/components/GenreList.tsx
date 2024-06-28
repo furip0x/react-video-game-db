@@ -38,9 +38,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 onClick={() => onSelectGenre(genre)}
                 variant="ghost"
                 width="100%"
-                // color={currentGenre ? "green" : ""}
                 fontStyle={currentGenre ? "bold" : "normal"}
-                // borderWidth="2px"
                 backgroundColor={currentGenre ? "green" : "transparent"}
                 justifyContent="start"
                 fontSize="lg"
