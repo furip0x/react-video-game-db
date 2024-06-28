@@ -5,6 +5,7 @@ import {
   Image,
   List,
   ListItem,
+  Text,
 } from "@chakra-ui/react"
 import useGenres, { IGenre } from "../hooks/UseGenres"
 import getCroppedImageUrl from "../services/image-url"
@@ -33,29 +34,32 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
 
           return (
             <ListItem key={genre.id} paddingY={2}>
-              <HStack>
-                <Image
-                  flexShrink="0"
-                  boxSize="32px"
-                  borderRadius="8px"
-                  src={getCroppedImageUrl(genre.image_background)}
-                  border="2px"
-                  borderColor={currentGenre ? "green" : "transparent"}
-                  objectFit="cover"
-                />
-                <Button
-                  onClick={() => onSelectGenre(genre)}
-                  variant="link"
-                  color={currentGenre ? "green" : ""}
-                  fontStyle={currentGenre ? "bold" : "normal"}
-                  justifyContent="start"
-                  fontSize="lg"
-                  textAlign="left"
-                  whiteSpace="wrap"
-                >
-                  {genre.name}
-                </Button>
-              </HStack>
+              <Button
+                onClick={() => onSelectGenre(genre)}
+                variant="ghost"
+                width="100%"
+                // color={currentGenre ? "green" : ""}
+                fontStyle={currentGenre ? "bold" : "normal"}
+                // borderWidth="2px"
+                backgroundColor={currentGenre ? "green" : "transparent"}
+                justifyContent="start"
+                fontSize="lg"
+                textAlign="left"
+                whiteSpace="wrap"
+              >
+                <HStack>
+                  <Image
+                    flexShrink="0"
+                    boxSize="32px"
+                    borderRadius="8px"
+                    src={getCroppedImageUrl(genre.image_background)}
+                    border="2px"
+                    borderColor={currentGenre ? "green" : "transparent"}
+                    objectFit="cover"
+                  />
+                  <Text>{genre.name}</Text>
+                </HStack>
+              </Button>
             </ListItem>
           )
         })}
