@@ -1,6 +1,6 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { IGame } from "../entities/IGame"
+import IGame from "../entities/IGame"
 import getCroppedImageUrl from "../services/image-url"
 import CriticScore from "./CriticScore"
 import Emoji from "./Emoji"

@@ -1,8 +1,8 @@
-import { IGenre } from "./IGenre"
-import { IPlatform } from "./IPlatform"
-import { IPublishers } from "./IPublishers"
+import IGenre from "./IGenre"
+import IPlatform from "./IPlatform"
+import IPublishers from "./IPublishers"
 
-export interface IGame {
+export default interface IGame {
   id: number
   name: string
   slug: string

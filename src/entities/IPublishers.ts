@@ -1,4 +1,4 @@
-export interface IPublishers {
+export default interface IPublishers {
   id: number
   name: string
   slug: string

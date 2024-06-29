@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import ms from "ms"
-import { IGenre } from "../entities/IGenre"
+import IGenre from "../entities/IGenre"
 import APIClient from "../services/api-client"
 
 const apiClient = new APIClient<IGenre>("/genres")
