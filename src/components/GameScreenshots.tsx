@@ -13,10 +13,10 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (error) throw error
 
   return (
-    <SimpleGrid columns={[1, 2, 2, 3]} spacing={2}>
+    <SimpleGrid columns={[1, 2, 2]} spacing={2}>
       {data?.results.map((file, index) => (
         <GridItem key={index}>
-          <Image width="100%" src={file.image} />
+          <Image width="100%" src={file.image} borderRadius={10} />
         </GridItem>
       ))}
     </SimpleGrid>
