@@ -1,0 +1,35 @@
+import { SimpleGrid, Text } from "@chakra-ui/react"
+import { IGame } from "../entities/IGame"
+import CriticScore from "./CriticScore"
+import DefinitionItem from "./DefinitionItem"
+
+interface Props {
+  game: IGame
+}
+
+const GameAttributes = ({ game }: Props) => {
+  return (
+    <SimpleGrid columns={[1, 2]} spacing={5} as="dl">
+      <DefinitionItem term="Platforms">
+        {game.parent_platforms.map(({ platform }) => (
+          <Text key={platform.id}>{platform.name}</Text>
+        ))}
+      </DefinitionItem>
+      <DefinitionItem term="Metascore">
+        <CriticScore score={game.metacritic} />
+      </DefinitionItem>
+      <DefinitionItem term="Genre">
+        {game.genres.map((genre) => (
+          <Text>{genre.name}</Text>
+        ))}
+      </DefinitionItem>
+      <DefinitionItem term="Publishers">
+        {game.publishers.map((publisher) => (
+          <Text>{publisher.name}</Text>
+        ))}
+      </DefinitionItem>
+    </SimpleGrid>
+  )
+}
+
+export default GameAttributes

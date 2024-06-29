@@ -1,4 +1,6 @@
+import { IGenre } from "./IGenre"
 import { IPlatform } from "./IPlatform"
+import { IPublishers } from "./IPublishers"
 
 export interface IGame {
   id: number
@@ -9,4 +11,6 @@ export interface IGame {
   parent_platforms: { platform: IPlatform }[]
   metacritic: number
   rating_top: number
+  genres: IGenre[]
+  publishers: IPublishers[]
 }
