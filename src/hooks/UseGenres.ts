@@ -1,12 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import ms from "ms"
+import { IGenre } from "../entities/IGenre"
 import APIClient from "../services/api-client"
-
-export interface IGenre {
-  id: number
-  name: string
-  image_background: string
-}
 
 const apiClient = new APIClient<IGenre>("/genres")
 
