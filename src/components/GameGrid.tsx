@@ -8,7 +8,7 @@ import GameCardSkeleton from "./Skeletons/GameCardSkeleton"
 
 const GameGrid = () => {
   const { data, isLoading, error, fetchNextPage, hasNextPage } = useGames()
-  const skeletons = Array.from({ length: 6 })
+  const skeletons = Array.from({ length: 12 })
   const dataLength =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0
 
